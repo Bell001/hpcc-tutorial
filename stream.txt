@@ -1,0 +1,30 @@
+#Stream
+
+/hpcc-1.5.0/STREAM
+ls
+  - stream.c
+  - onecpu.c
+  
+run by 
+   mpicc -g -std=c99 -O stream.c -o stream
+   
+   debug :
+      - link include for hpcc.h, hpccver.h
+        be in hpcc-1.5.0/include
+        
+        link include for hpccmema.h 
+        be in hpcc-1.5.0/hpl/include
+        
+        solve 
+          add path like this
+            #include <hpcc.h> --> #include <path-to-file/hpcc.h>
+            
+      - not know symbols in file .c
+        solve 
+           add flag -std=c99 in command
+           
+      - undefined reference to `MPI_Wtime' 
+        slove 
+           change 'gcc' -> 'mpicc'
+          
+      [unsolve] undefined reference to `HPCC_LocalVectorSize'
