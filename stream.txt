@@ -1,4 +1,9 @@
 #Stream
+STREAM is the de facto industry standard benchmark
+for measuring sustained memory bandwidth.
+
+Documentation for STREAM is on the web at:
+   http://www.cs.virginia.edu/stream/ref.html
 
 Choice 1 [unrealible]
 /hpcc-1.5.0/STREAM
