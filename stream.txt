@@ -1,5 +1,6 @@
 #Stream
 
+Choice 1 [unrealible]
 /hpcc-1.5.0/STREAM
 ls
   - stream.c
@@ -28,3 +29,28 @@ run by
            change 'gcc' -> 'mpicc'
           
       [unsolve] undefined reference to `HPCC_LocalVectorSize'
+ 
+Choice 2
+/home/bell/HPCC/hpcc-1.5.0/STREAM-master
+source : git clone https://github.com/jeffhammond/STREAM.git
+ls
+    ISTORY.txt  LICENSE.txt  Makefile  mysecond.c README stream.c  stream.f
+    
+    run by 
+    1. gcc -O stream.c -o stream
+    2. gcc -c mysecond.c
+    3. g77 -O stream.f mysecond.o -o stream
+       use g77 --> gfortran if not have [one node]
+    4. gcc -fopenmp -D_OPENMP stream.c -o stream 
+       *cont. in [parallel part]
+    5. export OMP_NUM_THREADS=2
+    6. ./stream 
+    
+    debug :
+       - run by [1] can't compile because not have time.h file
+        slove
+            add -D_BSD_SOURCE in command
+                gcc -g -std=c99  -D_BSD_SOURCE -O -fopenmp stream.c -o stream_omp
+       [unsolve] run by [2] can't compile because can't link to -D_OPENMP
+    
+    
