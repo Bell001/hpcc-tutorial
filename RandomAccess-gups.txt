@@ -1,0 +1,27 @@
+#RandomAccess-Gups
+measures the rate of integer random updates of memory
+Ref: https://github.com/alexandermerritt/gups/blob/master/README
+
+git clone https://github.com/alexandermerritt/gups
+vim Makefile.linux   [set(GUPS)]
+vim gups_vanilla.c    [set(GUPS_2)] --> find mpi.h
+make -f Makefile.linux gups_vanilla
+
+sudo yum install mpich-3.2-autoload.x86_64
+sudo yum install mpich-3.2-devel.x86_64
+export PATH=$PATH:/usr/lib/openmpi/bin
+
+mpirun -np 2 gups_vanilla 20 1000 1024
+---------------------- Setting Value ------------------------------
+1 proc:
+gups_vanilla N M chunk
+
+P procs:
+mpirun -np P gups_vanilla N M chunk
+
+where
+
+N = length of global table is 2^N
+M = # of update sets per proc
+chunk = # of updates in one set on each proc
+------------------------------------------------------------------
