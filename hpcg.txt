@@ -1,0 +1,20 @@
+#HPCG เป็นตัวเสริมขึ้นมาไม่ได้อยู่ใน HPCC
+
+Ref: http://www.hpcg-benchmark.org/software/index.html 
+download gpu binary
+
+Set up
+  in hpcg.dat
+        nx ny nz
+        times (sec)
+  * set ที่จำนวนเท่าของ 16 จะดี
+  try 128, 256
+  
+Run
+  mpirun -np 4 -hostfile hostfile ./xhpcg
+  mpirun -np 4 ./xhpcg
+  ./xhpcg
+  
+  -np N
+  * N ส่วนใหญ่จะดีขึ้นที่ 2 หลังจากนั้นจะแย่ลง
+  
